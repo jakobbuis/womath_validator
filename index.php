@@ -1,10 +1,13 @@
 <?php
 
+require 'vendor/autoload.php';
+require 'config.php';
+
 /*
  * Setup and configuration
  */
 $app = new \Slim\Slim();
-
+$database = new medoo($config['database']);
 /*
  * Validation endpoints
  */
