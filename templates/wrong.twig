@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Entry correct</title>
+</head>
+<body>
+    <p>
+        You've confirmed to <strong>not</strong> work at {{ company }}. If this is a mistake, you can
+        <a href="{{ urlFor('correct', {"uuid": uuid}) }}">mark {{ company }} as correct instead</a>.
+    </p>
+    <p>
+        Thank you very much for contributing to this research project. Your information will remain private. We'll not contact you again.
+    </p>
+</body>
+</html>
