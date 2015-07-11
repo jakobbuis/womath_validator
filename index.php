@@ -8,6 +8,15 @@ require 'config.php';
  */
 $app = new \Slim\Slim();
 $database = new medoo($config['database']);
+
+/*
+ * Go away message for stray users
+ */
+$app->get('/', function(){
+    echo 'This is the validation endpoint for the womath research project.';
+    echo 'You need to use the link in the email to validate.';
+});
+
 /*
  * Validation endpoints
  */
