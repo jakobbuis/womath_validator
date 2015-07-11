@@ -8,5 +8,8 @@ $config = [
         'database_name' => '',
         'username'      => '',
         'password'      => ''
+    ],
+    'mandrill' => [
+        'api_key' => ''
     ]
 ];
