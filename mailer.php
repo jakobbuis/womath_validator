@@ -49,6 +49,9 @@ foreach ($entries as $entry) {
     // Send email
     $result = $mandrill->messages->send($message, false);
 
+    // Update status
+    $database->update('people', ['mandrill_status' => $result[0]['status']], ['uuid' => $entry['uuid']]);
+
     // Return result
     echo 'Email sent to ID ' . $entry['uuid'] . ' email ' . $entry['email'] . ' status ' . $result[0]['status'] . "\n";
 }
