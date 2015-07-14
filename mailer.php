@@ -14,9 +14,15 @@ $emailHTML = $twig->loadTemplate('email.html.twig');
 $emailText = $twig->loadTemplate('email.text.twig');
 
 /*
- * Gather all entries to sent
+ * Gather all entries to sent:
+ * 1) must have a company name
+ * 2) must have a commit count of 6 or higher
+ * 3) group by email to avoid sending double mails
  */
-$entries = $database->select('people', ['uuid', 'name', 'email', 'company_name'], ['company_name[!]' => null, 'GROUP' => 'email']);
+$entries = $database->select('people',
+    ['uuid', 'name', 'email', 'company_name'],
+    ['AND' =>['company_name[!]' => null, 'commits_count[>=]' => 6], 'GROUP' => 'email']
+);
 
 /*
  * Queue all emails
